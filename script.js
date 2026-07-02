@@ -13,6 +13,7 @@ const maxScoreSpan = document.getElementById("max-score");
 const resultMessage = document.getElementById("result-message");
 const restartButton = document.getElementById("restart-btn");
 const progressBar = document.getElementById("progress-bar");
+const playerNameInput = document.getElementById("player-name");
 
 const quizQuestions = [
     {
@@ -65,6 +66,7 @@ const quizQuestions = [
 // Quiz State vars
 let currentQuestionIndex = 0;
 let score = 0;
+let playerName = "";
 let answersDisabled = false;
 
 totalQuestionsSpan.textContent = quizQuestions.length;
@@ -76,6 +78,11 @@ startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", restartQuiz);
 
 function startQuiz() {
+    playerName = playerNameInput.value.trim();
+    if(playerName === "") {
+        alert("Please enter your name to start the quiz.");
+        return;
+    }
     currentQuestionIndex = 0;
     score = 0;
     scoreSpan.textContent = 0;
@@ -150,15 +157,15 @@ function showResult() {
     const percentage = (score / quizQuestions.length) * 100;
 
     if(percentage === 100) {
-        resultMessage.textContent = "Excellent! You got all the answers correct!";
+        resultMessage.textContent = 'Bravo ' + playerName + '! Pa ti si genijalac!';
     } else if(percentage >= 80) {
-        resultMessage.textContent = "Great job! You know your stuff!";
+        resultMessage.textContent = "Dosta dobro, znaš puno toga!";
     } else if(percentage >= 60) {
-        resultMessage.textContent = "Not bad! Keep learning!";
+        resultMessage.textContent = "Nije loše, ali možeš bolje!";
     } else if(percentage >= 40) {
-        resultMessage.textContent = "You can do better! Keep trying!";
+        resultMessage.textContent = "Pokušaj ponovo, možeš bolje!";
     } else {
-        resultMessage.textContent = "Keep practicing! You'll get better!";
+        resultMessage.textContent = playerName + ", " + playerName + "... Moraš još puno učiti!";
     }
 }
 

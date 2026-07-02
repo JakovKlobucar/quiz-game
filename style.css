@@ -43,10 +43,37 @@ body {
     margin-bottom: 20px;
 }
 
+#player-name {
+    padding: 12px;
+    width: 50%;
+    max-width: 300px;
+    margin: 0 auto 20px auto;
+    border: 2px solid #e86a33;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+#player-name::placeholder {
+    color: #b2b1b1;
+    text-align: center;
+}
+
 #start-screen p {
     color: #666;
     font-size: 1.1rem;
     margin-bottom: 30px;
+}
+
+#start-btn {
+    background-color: #e86a33;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: #838383 0px 5px 10px -5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
 }
 
 .quiz-header{
